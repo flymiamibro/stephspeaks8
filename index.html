@@ -12,14 +12,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,800&display=swap" rel="stylesheet" />
 
   <style>
-    /* ─── Reset & Base ─────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --red:    #FF0020;
-      --black:  #000000;
-      --white:  #ffffff;
-      --font:   'Montserrat', sans-serif;
+      --red:   #FF0020;
+      --black: #000000;
+      --white: #ffffff;
+      --font:  'Montserrat', sans-serif;
     }
 
     html { scroll-behavior: smooth; }
@@ -34,7 +33,6 @@
     a { text-decoration: none; color: inherit; }
     p { margin: 0; }
 
-    /* ─── Layout helpers ───────────────────────────────────────── */
     .container {
       width: 100%;
       max-width: 1100px;
@@ -42,7 +40,7 @@
       padding: 0 20px;
     }
 
-    /* ─── SECTION 1 — Hero headline ────────────────────────────── */
+    /* ─── HERO ── */
     .hero {
       background: var(--black);
       padding: 48px 20px 36px;
@@ -72,24 +70,24 @@
       color: var(--white);
     }
 
-    /* ─── SECTION 2 — Image + Bullets ─────────────────────────── */
+    /* ─── FEATURES ── */
     .features {
       background: var(--black);
       padding: 20px 20px 40px;
     }
 
-.features__inner {
-  display: flex;
-  flex-direction: row;
-  gap: 48px;
-  align-items: flex-start;
-  max-width: 900px;
-  margin: 0 auto;
-}
+    .features__inner {
+      display: flex;
+      flex-direction: row !important;
+      gap: 48px;
+      align-items: flex-start;
+      max-width: 900px;
+      margin: 0 auto;
+    }
 
-    /* Image column */
     .features__image-col {
       flex: 0 0 42%;
+      min-width: 0;
     }
 
     .features__image-col img {
@@ -98,30 +96,9 @@
       display: block;
     }
 
-    /* Placeholder image box */
-    .features__image-placeholder {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      background: #1a1a1a;
-      border: 2px dashed #444;
-      border-radius: 10px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      color: #666;
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .features__image-placeholder svg {
-      opacity: 0.3;
-    }
-
-    /* Bullets column */
     .features__bullets-col {
       flex: 1;
+      min-width: 0;
       padding-top: 16px;
     }
 
@@ -150,7 +127,7 @@
       color: var(--red);
     }
 
-    /* ─── SECTION 3 — CTA Button ───────────────────────────────── */
+    /* ─── CTA ── */
     .cta-section {
       background: var(--black);
       padding: 20px 20px 48px;
@@ -177,7 +154,7 @@
       background: #e0001c;
     }
 
-    /* ─── SECTION 4 — Footer nav ───────────────────────────────── */
+    /* ─── FOOTER ── */
     .footer {
       background: var(--white);
       padding: 18px 20px;
@@ -206,7 +183,7 @@
       background: #ccc;
     }
 
-    /* ─── MODAL / POPUP ────────────────────────────────────────── */
+    /* ─── MODAL ── */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -218,9 +195,7 @@
       padding: 20px;
     }
 
-    .modal-overlay.active {
-      display: flex;
-    }
+    .modal-overlay.active { display: flex; }
 
     .modal {
       background: var(--white);
@@ -236,7 +211,7 @@
 
     @keyframes modalIn {
       from { opacity: 0; transform: scale(0.96) translateY(8px); }
-      to   { opacity: 1; transform: scale(1)    translateY(0); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
     }
 
     .modal__close {
@@ -285,13 +260,8 @@
       transition: border-color 0.2s;
     }
 
-    .modal__form input:focus {
-      border-color: var(--red);
-    }
-
-    .modal__form input::placeholder {
-      color: #aaa;
-    }
+    .modal__form input:focus { border-color: var(--red); }
+    .modal__form input::placeholder { color: #aaa; }
 
     .btn-submit {
       background: var(--red);
@@ -321,39 +291,22 @@
       line-height: 1.5;
     }
 
-    /* ─── MOBILE ───────────────────────────────────────────────── */
-    @media (max-width: 720px) {
+    /* ─── MOBILE ── */
+    @media (max-width: 600px) {
       .hero { padding: 32px 16px 24px; }
-
-      .features__inner {
-        flex-direction: column;
-        gap: 24px;
-      }
-
-      .features__image-col {
-        flex: unset;
-        width: 100%;
-      }
-
-      .features__bullets-col { padding-top: 0; }
-
-      .bullet-list li { font-size: 15px; }
-
-      .btn-primary {
-        width: 100%;
-        padding: 16px 20px;
-      }
-
+      .features__inner { gap: 16px; }
+      .features__image-col { flex: 0 0 45%; }
+      .bullet-list li { font-size: 13px; }
+      .btn-primary { width: 100%; padding: 16px 20px; }
       .footer__nav { gap: 16px; }
       .footer__sep { display: none; }
-
       .modal { padding: 32px 20px 24px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ── HERO ──────────────────────────────────────────────────── -->
+  <!-- ── HERO ── -->
   <section class="hero">
     <div class="container">
       <p class="hero__label"><span>FREE TRAINING:</span></p>
@@ -363,16 +316,16 @@
     </div>
   </section>
 
-  <!-- ── FEATURES ──────────────────────────────────────────────── -->
+  <!-- ── FEATURES ── -->
   <section class="features">
     <div class="container">
       <div class="features__inner">
 
         <!-- Left: image -->
         <div class="features__image-col">
-          <!-- Replace the placeholder below with an <img> tag pointing to your image -->
-<img src="myphoto.jpg" alt="myphoto.jpg" />
-</div>
+          <img src="myphoto.jpg" alt="myphoto" />
+        </div>
+
         <!-- Right: bullet list -->
         <div class="features__bullets-col">
           <ul class="bullet-list">
@@ -413,7 +366,7 @@
     </div>
   </section>
 
-  <!-- ── CTA ───────────────────────────────────────────────────── -->
+  <!-- ── CTA ── -->
   <section class="cta-section">
     <div class="container">
       <button class="btn-primary" onclick="openModal()">
@@ -422,7 +375,7 @@
     </div>
   </section>
 
-  <!-- ── FOOTER ────────────────────────────────────────────────── -->
+  <!-- ── FOOTER ── -->
   <footer class="footer">
     <nav class="footer__nav">
       <a href="/terms" target="_blank">terms of service</a>
@@ -433,15 +386,15 @@
     </nav>
   </footer>
 
-  <!-- ── MODAL ─────────────────────────────────────────────────── -->
+  <!-- ── MODAL ── -->
   <div class="modal-overlay" id="modal" onclick="handleOverlayClick(event)">
     <div class="modal">
       <button class="modal__close" onclick="closeModal()" aria-label="Close">&#x2715;</button>
       <h2 class="modal__title">fill out the form for access:</h2>
       <div class="modal__form">
-        <input type="text"  placeholder="First name"    autocomplete="given-name" />
-        <input type="email" placeholder="Email"         autocomplete="email" />
-        <input type="tel"   placeholder="Phone number"  autocomplete="tel" />
+        <input type="text"  placeholder="First name"   autocomplete="given-name" />
+        <input type="email" placeholder="Email"        autocomplete="email" />
+        <input type="tel"   placeholder="Phone number" autocomplete="tel" />
         <button class="btn-submit" onclick="handleSubmit()">GET ACCESS NOW</button>
       </div>
       <p class="modal__disclaimer">
@@ -455,25 +408,17 @@
       document.getElementById('modal').classList.add('active');
       document.body.style.overflow = 'hidden';
     }
-
     function closeModal() {
       document.getElementById('modal').classList.remove('active');
       document.body.style.overflow = '';
     }
-
     function handleOverlayClick(e) {
-      // Close if clicking the dark backdrop, not the modal itself
       if (e.target === document.getElementById('modal')) closeModal();
     }
-
     function handleSubmit() {
-      // TODO: wire up to your email provider (Mailchimp, ConvertKit, etc.)
-      // For now, just close the modal
       alert('Form submitted! Wire this up to your email provider.');
       closeModal();
     }
-
-    // Close on Escape key
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeModal();
     });
