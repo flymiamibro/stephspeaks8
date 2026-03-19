@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YOUR BRAND NAME</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+    p { margin: 0; }
+    ul { list-style: none; }
+
+    /* ── Layout helpers ── */
+    .section { width: 100%; }
+    .container { max-width: 100%; margin: 0 auto; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 65px 315px 0;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 49px;
+      font-weight: 800;
+      line-height: 1.3;
+      color: #fff;
+    }
+
+    /* ── SUBHEADING ── */
+    .subheading {
+      padding: 20px 10px 15px;
+      text-align: center;
+    }
+    .subheading p {
+      font-size: 30px;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    /* ── ESSAY ── */
+    .essay-section {
+      padding: 40px 300px;
+    }
+    .essay-block {
+      border-left: 4px solid #ff001f;
+      padding-left: 36px;
+    }
+    .essay-body {
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1.8;
+      color: #e8e8e8;
+      margin-bottom: 24px;
+    }
+    .essay-body:last-child { margin-bottom: 0; }
+
+    @media (max-width: 900px) {
+      .essay-section { padding: 30px 20px; }
+      .essay-block { padding-left: 20px; }
+      .essay-body { font-size: 16px; }
+    }
+
+    /* ── CTA BUTTON ── */
+    .cta-section {
+      padding: 40px;
+      text-align: center;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: #ff001f;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 28px;
+      font-weight: 600;
+      padding: 15px 95px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      transition: opacity .25s;
+      text-align: center;
+    }
+    .btn-primary:hover { opacity: .88; }
+
+    /* ── PAIN POINTS ── */
+    .pain-section {
+      padding: 90px 140px 40px;
+    }
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    .pain-card {
+      border: 1px solid #fff;
+      padding: 20px 10px 30px;
+      position: relative;
+    }
+    .pain-icon {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #fff;
+      border-radius: 50%;
+      background: #333;
+      margin: -50px auto 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+    }
+    .pain-card h3 {
+      font-size: 28px;
+      font-weight: 600;
+      text-align: center;
+      margin: 18px 0 16px;
+    }
+    .pain-card hr {
+      border: none;
+      border-top: 1px solid #fff;
+      margin-bottom: 16px;
+    }
+    .pain-card p {
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.55;
+    }
+    .pain-card p + p { margin-top: 12px; }
+
+    /* ── ASPIRATION TEXT ── */
+    .aspiration {
+      padding: 25px 240px 40px;
+    }
+    .aspiration p {
+      font-size: 27px;
+      font-weight: 700;
+      line-height: 1.5;
+      margin-bottom: 18px;
+    }
+
+    /* ── UNDERSTAND heading ── */
+    .understand {
+      padding: 10px 300px 22px;
+      text-align: center;
+    }
+    .understand h2 {
+      font-size: 49px;
+      font-weight: 800;
+      line-height: 1.3;
+    }
+
+    /* ── EXPLANATION TEXT ── */
+    .explanation {
+      padding: 25px 220px 40px;
+    }
+    .explanation p {
+      font-size: 27px;
+      font-weight: 700;
+      line-height: 1.5;
+      margin-bottom: 18px;
+    }
+
+    /* ── YOU WILL LEARN ── */
+    .learn-heading {
+      padding: 5px 320px;
+      text-align: center;
+    }
+    .learn-heading h2 {
+      font-size: 49px;
+      font-weight: 800;
+    }
+
+    /* ── CURRICULUM + TESTIMONIAL IMAGES ── */
+    .curriculum {
+      padding: 50px 180px;
+    }
+    .curriculum-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .check-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 18px;
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+    .check-list li .icon { color: #ff001f; font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+
+    /* carousel placeholder */
+    .carousel-placeholder {
+      background: #111;
+      border: 2px dashed #333;
+      border-radius: 8px;
+      height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #555;
+      font-size: 16px;
+    }
+
+    /* ── WHAT YOU GAIN ── */
+    .gain-heading {
+      padding: 0 320px 0;
+      text-align: center;
+    }
+    .gain-heading h2 { font-size: 49px; font-weight: 800; }
+
+    .gain-section { padding: 25px 160px; }
+    .gain-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+    .gain-card { text-align: center; }
+    .gain-card .gain-icon {
+      width: 200px; height: 200px;
+      background: #111;
+      border-radius: 50%;
+      margin: 0 auto 18px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 64px;
+    }
+    .gain-card h3 {
+      font-size: 28px;
+      font-weight: 700;
+      text-decoration: underline;
+      margin-bottom: 18px;
+    }
+    .gain-card ul li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 18px; font-weight: 500; line-height: 1.5;
+      margin-bottom: 12px; text-align: left;
+    }
+    .gain-card ul li .icon { color: #ff001f; flex-shrink: 0; margin-top: 3px; }
+
+    /* ── PRICING BOX ── */
+    .pricing-section {
+      background: #000;
+      padding: 50px 40px;
+    }
+    .pricing-box {
+      max-width: 560px;
+      margin: 0 auto;
+      background: #fff;
+      color: #000;
+      border-radius: 8px;
+      padding: 30px 40px;
+      text-align: center;
+    }
+    .pricing-label {
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: underline;
+      margin-bottom: 8px;
+    }
+    .pricing-amount {
+      font-size: 42px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .tag-pill {
+      display: inline-block;
+      border: 2px solid #ff001f;
+      color: #ff001f;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 3px 14px;
+      margin-bottom: 22px;
+    }
+    .pricing-list { text-align: left; margin-bottom: 28px; }
+    .pricing-list li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 18px; font-weight: 500; line-height: 1.5;
+      margin-bottom: 12px;
+    }
+    .pricing-list li .icon { color: #ff001f; flex-shrink: 0; margin-top: 3px; }
+    .btn-cta-lg {
+      display: block;
+      background: #ff001f;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 22px; font-weight: 600;
+      padding: 14px 20px;
+      border-radius: 60px;
+      border: none; cursor: pointer;
+      transition: opacity .25s;
+      width: 100%;
+    }
+    .btn-cta-lg:hover { opacity: .88; }
+
+    /* ── INVALUABLE ── */
+    .invaluable {
+      padding: 30px 210px 35px;
+    }
+    .invaluable-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .invaluable h2 {
+      font-size: 42px; font-weight: 800; line-height: 1.3;
+      margin-bottom: 28px;
+    }
+    .invaluable p {
+      font-size: 24px; font-weight: 700; line-height: 1.55;
+      margin-bottom: 16px;
+    }
+    .img-placeholder {
+      background: #111;
+      border: 2px dashed #333;
+      border-radius: 8px;
+      height: 460px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #555; font-size: 16px;
+    }
+
+    /* ── CHANGE heading ── */
+    .change-heading {
+      padding: 35px 360px;
+      text-align: center;
+    }
+    .change-heading h2 { font-size: 42px; font-weight: 800; line-height: 1.3; }
+
+    /* ── CHANGE text ── */
+    .change-text { padding: 20px 210px; }
+    .change-text p {
+      font-size: 24px; font-weight: 700; line-height: 1.55;
+      margin-bottom: 16px;
+    }
+
+    /* ── WINS heading ── */
+    .wins-heading { padding: 30px 240px; text-align: center; }
+    .wins-heading h2 { font-size: 49px; font-weight: 800; }
+
+    /* ── WINS SCREENSHOTS ── */
+    .wins-section { padding: 15px 125px; }
+    .wins-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .win-img {
+      background: #111;
+      border: 2px dashed #333;
+      border-radius: 8px;
+      height: 200px;
+      display: flex; align-items: center; justify-content: center;
+      color: #555; font-size: 14px;
+      margin-bottom: 16px;
+    }
+    .win-img.tall { height: 300px; }
+    .win-img.taller { height: 360px; }
+
+    /* ── CHOICES ── */
+    .choices-heading { padding: 35px 280px; text-align: center; }
+    .choices-heading h2 { font-size: 49px; font-weight: 800; }
+
+    .choices-video { padding: 40px 300px 30px; }
+
+    /* ── TWO CHOICES ── */
+    .choices-section { padding: 60px 40px 25px; }
+    .choices-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    /* bad choice */
+    .choice-bad {
+      background: #888;
+      border-radius: 8px;
+      padding: 25px 21px;
+      text-align: center;
+    }
+    .choice-icon { font-size: 52px; margin-bottom: 10px; }
+    .choice-bad h3 { font-size: 28px; font-weight: 800; margin-bottom: 4px; }
+    .choice-bad .sub { font-size: 15px; font-weight: 500; margin-bottom: 20px; }
+    .bad-list li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 17px; font-weight: 600; line-height: 1.5;
+      margin-bottom: 12px; text-align: left;
+      background: #888; padding: 6px 8px; border-radius: 4px;
+    }
+    .bad-list li .icon { flex-shrink: 0; margin-top: 3px; }
+    .btn-bad {
+      display: block;
+      background: #b60017;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 20px; font-weight: 600;
+      padding: 14px 20px;
+      border: none; cursor: pointer;
+      margin-top: 30px; width: 100%;
+      transition: opacity .25s;
+    }
+    .btn-bad:hover { opacity: .88; }
+
+    /* good choice */
+    .choice-good {
+      background: #fff;
+      color: #000;
+      border-radius: 8px;
+      padding: 25px 21px;
+      text-align: center;
+    }
+    .choice-good h3 { font-size: 28px; font-weight: 800; margin-bottom: 4px; }
+    .choice-good .sub { font-size: 15px; font-weight: 500; margin-bottom: 20px; }
+    .good-list li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 17px; font-weight: 600; line-height: 1.5;
+      margin-bottom: 12px; text-align: left;
+      background: #fff; padding: 6px 8px; border-radius: 4px;
+    }
+    .good-list li .icon { color: #ff001f; flex-shrink: 0; margin-top: 3px; }
+    .lock-item {
+      background: #fff; color: #000;
+      font-size: 17px; font-weight: 600;
+      padding: 8px 10px; border-radius: 4px;
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 8px;
+    }
+    .lock-item .icon { color: #ff001f; }
+    .cancel-item {
+      background: #fff; color: #000;
+      font-size: 17px; font-weight: 600;
+      padding: 8px 10px; border-radius: 4px;
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 20px;
+    }
+    .cancel-item .icon { color: #ff001f; }
+    .btn-good {
+      display: block;
+      background: #ff001f;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 20px; font-weight: 600;
+      padding: 14px 20px;
+      border: 3px solid #000;
+      border-radius: 0;
+      cursor: pointer;
+      margin-top: 10px; width: 100%;
+      transition: opacity .25s;
+    }
+    .btn-good:hover { opacity: .88; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #fff;
+      color: #000;
+      padding: 12px 0;
+      text-align: center;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      font-size: 15px;
+      font-weight: 600;
+      color: #000;
+      transition: opacity .2s;
+    }
+    .footer-links a:hover { opacity: .7; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero { padding: 35px 20px 5px; }
+      .hero h1 { font-size: 28px; }
+      .subheading p { font-size: 17px; }
+      .video-section { padding: 35px 25px 15px; }
+      .cta-section { padding: 30px 65px 10px; }
+      .btn-primary { font-size: 18px; padding: 8px 8px; width: 100%; }
+      .pain-section { padding: 90px 20px 25px; }
+      .pain-grid { grid-template-columns: 1fr; }
+      .pain-card h3 { font-size: 22px; }
+      .aspiration { padding: 20px 15px 5px; }
+      .aspiration p { font-size: 18px; }
+      .understand { padding: 40px 15px 10px; }
+      .understand h2 { font-size: 27px; }
+      .explanation { padding: 35px 15px 5px; }
+      .explanation p { font-size: 18px; }
+      .learn-heading { padding: 28px 30px 5px; }
+      .learn-heading h2 { font-size: 28px; }
+      .curriculum { padding: 33px 6px 5px; }
+      .curriculum-grid { grid-template-columns: 1fr; }
+      .check-list li { font-size: 18px; }
+      .gain-heading { padding: 35px 30px 5px; }
+      .gain-heading h2 { font-size: 28px; }
+      .gain-section { padding: 5px 20px 5px; }
+      .gain-grid { grid-template-columns: 1fr; }
+      .pricing-section { padding: 25px 5px; }
+      .invaluable { padding: 20px 15px 25px; }
+      .invaluable-grid { grid-template-columns: 1fr; }
+      .invaluable h2 { font-size: 28px; }
+      .invaluable p { font-size: 18px; }
+      .change-heading { padding: 25px 20px; }
+      .change-heading h2 { font-size: 28px; }
+      .change-text { padding: 10px 15px 10px; }
+      .change-text p { font-size: 18px; }
+      .wins-heading { padding: 30px 30px; }
+      .wins-heading h2 { font-size: 28px; }
+      .wins-section { padding: 15px 25px; }
+      .wins-grid { grid-template-columns: 1fr; }
+      .choices-heading { padding: 25px 30px; }
+      .choices-heading h2 { font-size: 28px; }
+      .choices-video { padding: 15px 25px 15px; }
+      .choices-section { padding: 40px 5px 25px; }
+      .choices-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════ HERO ═══════════════════ -->
+  <section class="section hero">
+    <h1>YOUR HEADLINE GOES HERE</h1>
+  </section>
+
+  <!-- ═══════════════════ SUBHEADING ═══════════════════ -->
+  <section class="section subheading">
+    <p>I will teach you how to <strong>MASTER</strong> it.</p>
+  </section>
+
+  <!-- ═══════════════════ ESSAY ═══════════════════ -->
+  <section class="section essay-section">
+    <div class="essay-block">
+      <p class="essay-body">
+        While he may frame his behavior as confidence, strategy, or even “teaching,” a closer psychological examination reveals something far less impressive. This is not the profile of a socially adept or romantically successful individual. It is the profile of someone driven by insecurity, performative masculinity, and a profound dependence on male validation.
+      </p>
+      <p class="essay-body">
+        1. The Real Audience: Other Men
+Despite positioning himself as someone who is “good with women,” his behavior makes one thing clear: women are not the audience. Other men are.
+Filming interactions turns what should be a human exchange into a staged performance. The goal is not connection but display. Views, comments, and reactions from a male audience become the reward system. (gay!) In this dynamic, the woman is reduced to a prop, a means of signaling status within a male hierarchy that prizes dominance and perceived sexual access.
+For someone genuinely secure and successful in dating, there is little incentive to broadcast these interactions. The compulsion to do so suggests that the validation he craves is not coming from meaningful relationships, but from the approval of other low value males online.
+      </p>
+      <p class="essay-body">
+       2. A Fear of Real Intimacy Disguised as Confidence
+On the surface, approaching women might appear bold. But the hidden camera reveals the truth: this is not confidence, it is a desparate grasp at control.
+By forcing and faking interactions and recording them, he removes the unpredictability and vulnerability that define real connection. He is not showing up as himself; he is performing a role. The camera acts as a shield, allowing him to distance himself emotionally from the outcome.
+This is often consistent with avoidant patterns. Real intimacy requires risk, empathy, and the possibility of rejection on a personal level. Performance requires none of these. It allows him to simulate connection while avoiding it entirely. This makes him a weak man.
+      </p>
+      <p class="essay-body">
+        3. Fragile Ego, Inflated Persona
+If the interaction were truly fulfilling, it would not need an audience.
+The constant need to record, post, and prove suggests a fragile sense of self that depends on external validation. The confident persona is curated and reinforced through feedback loops of attention, not grounded in genuine self-worth.
+You could reasonably trace this back to early dynamics where validation was inconsistent or conditional. Whether framed as “mommy issues” or unmet emotional needs, the pattern is the same: a grown man seeking constant affirmation because it was never securely developed during his childhood.
+      </p>
+      <p class="essay-body">
+        4. Disqualifying Himself
+The irony is that this behavior undermines the very thing it claims to achieve.
+Trust is non-negotiable in real relationships. A man who records women without their knowledge or consent signals immediately that he is unsafe for anything beyond a surface-level interaction. No amount of rehearsed lines can override that.
+He may gain attention in the short term, but he effectively disqualifies himself from meaningful, healthy relationships long term.
+      </p>
+      <p class="essay-body">
+        Conclusion
+What looks like confidence is insecurity with better marketing. What claims to attract women is actually aimed at impressing men (gay). And what is framed as success is, in reality, self-sabotage.
+He is not demonstrating mastery of dating. He is revealing that he does not know how to participate in it without turning it into a performance. Remove the performance, and there is nothing underneath it. 
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ CTA BUTTON ═══════════════════ -->
+  <section class="section cta-section">
+    <a href="#pricing" class="btn-primary">JOIN NOW</a>
+  </section>
+
+  <!-- ═══════════════════ PAIN POINTS ═══════════════════ -->
+  <section class="section pain-section">
+    <div class="pain-grid">
+
+      <div class="pain-card">
+        <div class="pain-icon">😣</div>
+        <h3><strong>PAIN POINT ONE</strong></h3>
+        <hr />
+        <p>Describe the first problem your audience is facing. Be specific and relatable. Use their own language.</p>
+        <p>Paint the picture of what their life looks like right now without your solution.</p>
+        <p>Make them feel understood and seen before you offer the fix.</p>
+        <p>Add one more compelling line about this struggle here.</p>
+      </div>
+
+      <div class="pain-card">
+        <div class="pain-icon">😞</div>
+        <h3><strong>PAIN POINT TWO</strong></h3>
+        <hr />
+        <p>Describe the second problem your audience is facing. Hit on the emotional core of this pain.</p>
+        <p>What does this failure cost them? Time, money, relationships, confidence?</p>
+        <p>Show you understand where they are right now and that it doesn't have to stay that way.</p>
+      </div>
+
+      <div class="pain-card">
+        <div class="pain-icon">😰</div>
+        <h3><strong>PAIN POINT THREE</strong></h3>
+        <hr />
+        <p>Describe the third problem — often fear or self-doubt. This is usually the root cause.</p>
+        <p>Call out the specific fears: fear of failure, fear of judgment, fear of wasting time.</p>
+        <p>Connect the fear to the lonely, stuck feeling your audience knows all too well.</p>
+        <p>End with something that resonates deeply — a feeling they can't shake.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════ ASPIRATION ═══════════════════ -->
+  <section class="section aspiration">
+    <p>I know you want to be the person who can <strong>confidently</strong> achieve [Outcome #1].</p>
+    <p>The person whose [metric of success] is full and overflowing. Anyone you approach says yes <strong>9 times out of 10.</strong></p>
+    <p>Your skills = <strong>FLOWING</strong>. No friction, no hesitation. Words always come and results are normal to you.</p>
+    <p>You have <strong>OPTIONS</strong>. You can choose your path, whether it's X or Y — it's easy for you.</p>
+    <p><strong>[Specific result]. [Another specific result]. [One more dream outcome].</strong></p>
+    <p>^^^ All of these are achievable. You just need to master <strong><u>ONE THING</u></strong>…</p>
+  </section>
+
+  <!-- ═══════════════════ UNDERSTAND ═══════════════════ -->
+  <section class="section understand">
+    <h2><u>UNDERSTAND</u>: GETTING [RESULT] COMES DOWN TO ONE THING…</h2>
+  </section>
+
+  <!-- ═══════════════════ EXPLANATION ═══════════════════ -->
+  <section class="section explanation">
+    <p>Cut out the noise you see everywhere. There is ONE thing you must master to achieve [goal]. If you master this, success is yours.</p>
+    <p>It is how you make [your audience/clients/customers] <strong>FEEL</strong>. That's it. And there IS a specific way to describe this.</p>
+    <p>For example… if you help them feel [Emotion 1], feel [Emotion 2], lower their [obstacle]… then you've won.</p>
+    <p>From the first interaction all the way through to [end result]… there is a CORRECT experience that should happen every step of the way.</p>
+    <p>And everything plays a part. The words you use, your [element 1], [element 2], your <strong>PRESENCE</strong>… all must be on point.</p>
+    <p>There are proven ways to do this. Truth be told, it's a skill you can learn.</p>
+    <p>And you may be thinking: <em>"OK, can you show me how?"</em><br><br>Well… that's exactly what <strong>[YOUR PROGRAM NAME]</strong> is for. This is precisely what I teach you inside.</p>
+  </section>
+
+  <!-- ═══════════════════ YOU WILL LEARN ═══════════════════ -->
+  <section class="section learn-heading">
+    <h2>YOU <u>WILL</u> LEARN:</h2>
+  </section>
+
+  <section class="section curriculum">
+    <div class="curriculum-grid">
+      <ul class="check-list">
+        <li><span class="icon">✅</span> How to [do specific skill #1] so that you can [achieve outcome] and [benefit]</li>
+        <li><span class="icon">✅</span> How to [do specific skill #2] so you can [outcome] and avoid [negative result]</li>
+        <li><span class="icon">✅</span> Once in [context], how to [do specific action]… [words/tactics/methods] that [result]</li>
+        <li><span class="icon">✅</span> The art of [advanced topic]… use these tactics to [powerful outcome]</li>
+        <li><span class="icon">✅</span> What REALLY makes [your audience] want [result]… and how to use this knowledge so they're <strong><u>begging</u></strong> to [action]</li>
+      </ul>
+      <div class="carousel-placeholder">📸 Testimonial / result screenshots carousel goes here</div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ WHAT YOU GAIN ═══════════════════ -->
+  <section class="section gain-heading">
+    <h2>WHAT YOU'LL GAIN ACCESS TO:</h2>
+  </section>
+
+  <section class="section gain-section">
+    <div class="gain-grid">
+
+      <div class="gain-card">
+        <div class="gain-icon">🎬</div>
+        <h3><u>70+ VIDEO MODULES</u></h3>
+        <ul>
+          <li><span class="icon">✅</span>Over 10 HOURS of complete breakdowns with <strong>actionable</strong> steps</li>
+          <li><span class="icon">✅</span>All videos covering: Mindset · Module 1 · Module 2 · Module 3 · Advanced Topics +MORE</li>
+          <li><span class="icon">✅</span>Free updates to any existing course content</li>
+        </ul>
+      </div>
+
+      <div class="gain-card">
+        <div class="gain-icon">🔄</div>
+        <h3><u>WEEKLY COACHING CALLS</u></h3>
+        <ul>
+          <li><span class="icon">✅</span>Each week I host a 1+ hour live coaching call (lecture + live Q&amp;A)</li>
+          <li><span class="icon">✅</span>You'll get the chance to <strong>directly</strong> ask me questions 1-on-1</li>
+          <li><span class="icon">✅</span>Every call is recorded and saved for you to rewatch anytime</li>
+        </ul>
+      </div>
+
+      <div class="gain-card">
+        <div class="gain-icon">💬</div>
+        <h3><u>COMMUNITY</u></h3>
+        <ul>
+          <li><span class="icon">✅</span>Join exclusive group channels with all community members</li>
+          <li><span class="icon">✅</span>Connect with <strong>like-minded</strong> people focused on the same goals as you</li>
+          <li><span class="icon">✅</span>You will feel the <strong>ENERGY</strong> once you join (wins, activity, and momentum inside)</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════ PRICING ═══════════════════ -->
+  <a id="pricing"></a>
+  <section class="section pricing-section">
+    <div class="pricing-box">
+      <p class="pricing-label"><u>LOCK IN YOUR PRICE NOW</u></p>
+      <p class="pricing-amount"><strong>$XX.00</strong></p>
+      <div class="tag-pill">PER MONTH</div>
+      <ul class="pricing-list">
+        <li><span class="icon">✅</span>Join via [Community Platform]</li>
+        <li><span class="icon">✅</span>[X] separate community channels</li>
+        <li><span class="icon">✅</span>Network with everyone inside</li>
+        <li><span class="icon">✅</span>Chance to get <strong>CUSTOM</strong> 1-1 advice from me for your situation</li>
+        <li><span class="icon">✅</span>Learn how to <strong>FAST-TRACK</strong> [desired outcome] and stay [benefit] <strong><u>FOREVER</u></strong></li>
+      </ul>
+      <a href="#" class="btn-cta-lg">JOIN NOW</a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ INVALUABLE ═══════════════════ -->
+  <section class="section invaluable">
+    <div class="invaluable-grid">
+      <div>
+        <h2>THE ABILITY TO [ACHIEVE OUTCOME] IS <u>INVALUABLE</u>.</h2>
+        <p>Yes, [skill/result] is something you can learn.</p>
+        <p>It is invaluable because there is no price tag on it. This isn't something you just buy — it <u>must</u> be developed.</p>
+        <p>And once you do learn it… [positive outcome] becomes automatic. You'll always have an abundance of [result].</p>
+        <p>The only gap between you having this and not having it is <u>information</u>.</p>
+        <p>And guess what? I have that information for you. The choice is yours.</p>
+      </div>
+      <div class="img-placeholder">📷 Hero image / photo goes here</div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ CHANGE HEADING ═══════════════════ -->
+  <section class="section change-heading">
+    <h2>NOTHING WILL EVER CHANGE, IF <u>YOU</u> DO NOT CHANGE.</h2>
+  </section>
+
+  <!-- ═══════════════════ CHANGE TEXT ═══════════════════ -->
+  <section class="section change-text">
+    <p>You must understand — this is crucial — that if you do not change <u>YOURSELF</u>, nothing else will change in your life.</p>
+    <p>Your current results come from who you are today. So want the same results? Keep doing what you're doing now.</p>
+    <p>Want different results? Want [dream outcome]? Then you must BECOME the person who [achieves that outcome].</p>
+    <p>How will you get [result] if you never learn [skill] in the first place? Do you expect [desired outcome] to just fall into your lap?</p>
+    <p><strong><u>YOU</u> must change first in order for your life to change.</strong></p>
+  </section>
+
+  <!-- ═══════════════════ WINS ═══════════════════ -->
+  <section class="section wins-heading">
+    <h2>MEMBERS INSIDE ARE WINNING…</h2>
+  </section>
+
+  <section class="section wins-section">
+    <div class="wins-grid">
+      <div>
+        <div class="win-img tall">📱 Screenshot / Testimonial 1</div>
+        <div class="win-img tall">📱 Screenshot / Testimonial 2</div>
+        <div class="win-img">📱 Screenshot / Testimonial 3</div>
+      </div>
+      <div>
+        <div class="win-img">📱 Screenshot / Testimonial 4</div>
+        <div class="win-img taller">📱 Screenshot / Testimonial 5</div>
+        <div class="win-img">📱 Screenshot / Testimonial 6</div>
+      </div>
+      <div>
+        <div class="win-img">📱 Screenshot / Testimonial 7</div>
+        <div class="win-img">📱 Screenshot / Testimonial 8</div>
+        <div class="win-img">📱 Screenshot / Testimonial 9</div>
+        <div class="win-img">📱 Screenshot / Testimonial 10</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ TWO CHOICES HEADING ═══════════════════ -->
+  <section class="section choices-heading">
+    <h2>YOU HAVE TWO CHOICES (WATCH):</h2>
+  </section>
+
+  <!-- second video -->
+  <section class="section choices-video">
+    <div class="video-wrapper">
+      <div class="video-placeholder">▶ Your second video goes here</div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ TWO CHOICES ═══════════════════ -->
+  <section class="section choices-section">
+    <div class="choices-grid">
+
+      <!-- BAD choice -->
+      <div class="choice-bad">
+        <div class="choice-icon">😭</div>
+        <h3>DO NOTHING</h3>
+        <p class="sub"><strong>Stay stuck</strong></p>
+        <ul class="bad-list">
+          <li><span class="icon">✔</span>Continue to [negative outcome #1] because you're CLUELESS about [what to do]</li>
+          <li><span class="icon">✔</span>Keep having a PITIFUL [result area], can't even get [small win] let alone [big win]</li>
+          <li><span class="icon">✔</span>Will end up settling for something MID because you CAN'T achieve [desired result]</li>
+          <li><span class="icon">✔</span>Fear of [action] and feeling [negative emotion] = ALL THE TIME</li>
+          <li><span class="icon">✔</span>Stay on the sidelines watching others run LAPS around you because THEY know what they're doing</li>
+        </ul>
+        <button class="btn-bad">Stay where you are</button>
+      </div>
+
+      <!-- GOOD choice -->
+      <div class="choice-good">
+        <div class="choice-icon">✅</div>
+        <h3>TAKE ACTION</h3>
+        <p class="sub"><strong>GET [YOUR DREAM RESULT]</strong></p>
+        <ul class="good-list">
+          <li><span class="icon">✔</span>You can <strong><u>confidently</u></strong> and <strong><u>charismatically</u></strong> approach any [opportunity] and [win] (you'll learn how)</li>
+          <li><span class="icon">✔</span>Your [results pipeline] is full, your schedule is packed… so many [opportunities] come to you</li>
+          <li><span class="icon">✔</span>You ARE a high-value [person/professional]… people naturally [trust/follow/buy from] you</li>
+          <li><span class="icon">✔</span>People are never bored or disengaged… your [skill] is <strong><u>magnetic</u></strong> and they WANT to work with you</li>
+          <li><span class="icon">✔</span>Eventually you achieve [ultimate dream outcome] and build the life you always wanted…</li>
+        </ul>
+        <div class="lock-item"><span class="icon">🔒</span> $XX/month forever</div>
+        <div class="cancel-item"><span class="icon">✖</span> Cancel anytime</div>
+        <a href="#pricing" class="btn-good">Become [your transformation promise]</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════ FOOTER ═══════════════════ -->
+  <footer>
+    <div class="footer-links">
+      <a href="#">Terms of Service</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Contact: <span class="__cf_email__" data-cfemail="432b262f2f2c033a2c363127
